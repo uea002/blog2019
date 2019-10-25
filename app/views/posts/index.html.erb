@@ -5,16 +5,17 @@
 <%@posts.each do |post|%>
 <div>
   <h3><%=post.title%></h3>
-  <p><%= post.body %></p>
-  <small><%=post.user&.login%></small>
-  <%= l(post.created_at, format: :long) %>
 
+  <div data>
+    <%= l(post.created_at, format: :long) %>
+  </div>
+  <small><%=post.user&.login%></small>
+  <p><%= post.body %></p>
+  <div more>
+    <%= link_to 'Подробнее', post %>
+  </div>
 </div>
 <%end%>
 
-
-
-
-<br>
 
 <%= link_to 'New Post', new_post_path %>

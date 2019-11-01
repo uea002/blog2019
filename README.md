@@ -1,24 +1,15 @@
-# README
+# Использование Docker
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+1. Установите `Docker`
+2. Выполните из корня приложения:
 
-Things you may want to cover:
+````
+docker build -t dev .
+docker run -itP -p 3000:3000 -v $(pwd):/app dev
+````
 
-* Ruby version
+Для запуска консоли:
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+````
+docker run -itP -v $(pwd):/app dev /bin/bash
+````

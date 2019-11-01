@@ -3,6 +3,7 @@
 <h1>Блог</h1>
 
 <%@posts.each do |post|%>
+<<<<<<< HEAD
 <div>
   <h3><%=post.title%></h3>
 
@@ -17,5 +18,15 @@
 </div>
 <%end%>
 
+=======
+<div class="post">
+  <h3><%=post.title%></h3>
+  <p><%= post.body %></p>
+  <small><%=post.user&.login%></small>
+  <%= l(post.created_at, format: :long) %>
+  <%= link_to 'Подробнее', post %>
+</div>
+<%end%>
+>>>>>>> 8fc1cac6981a6555b3593dd3df48144c9e428d5e
 
 <%= link_to 'New Post', new_post_path %>

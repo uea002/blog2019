@@ -10,7 +10,11 @@
   </head>
 
   <body>
-    <%= session[:user_id] %>
+    <%if @current_user.inspect %>
+      <%= "Hello, #{@current_user.login}!"%>
+      <%= link_to 'Logout', logout_path %>
+    <%end%>
+    <%if @current_user.inspect %>
     <%= yield %>
   </body>
 </html>

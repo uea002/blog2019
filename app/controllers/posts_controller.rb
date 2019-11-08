@@ -28,6 +28,7 @@ class PostsController < ApplicationController
   # POST /posts.json
   def create
     @post = Post.new(post_params)
+    @post.user = @post.current_user
 
     respond_to do |format|
       if @post.save
@@ -75,6 +76,6 @@ class PostsController < ApplicationController
       params.require(:post).permit(:author, :body, :title)
     end
     def check_edit
-      redirect_to posts_path, notice: 'ДОСТУП ЗАПРЕЩЕН' if !@post.edit_by?(@current_post)
+      redirect_to posts_path, notice: 'ДОСТУП ЗАПРЕЩЕН' if !@post.edit_by?(@current_user)
     end
 end

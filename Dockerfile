@@ -30,6 +30,11 @@ RUN gem install bundler && bundle install --jobs 20 --retry 5
 # Copy the main application.
 COPY . ./
 
+RUN yarn install --check-files
+RUN rails webpacker:install
+RUN rails db:migrate
+RUN rails db:seed
+
 # Expose port 3000 to the Docker host, so we can access it
 # from the outside.
 EXPOSE 3000

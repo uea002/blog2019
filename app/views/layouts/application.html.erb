@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Blog</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <% flash.each do |key, val| %>
+      <p class='notice'>
+        <%= val %>
+      </p>
+    <% end %>
+    <%if @current_user%>
+      <%= "Здравствуйте, #{@current_user.login}!" %>
+      <%= link_to 'Выйти', logout_path %>
+    <%else%>
+      <%= link_to 'Войти', login_path %>
+      <%= link_to 'Зарегистрироваться', new_user_path %>
+    <%end%>
+    <%= yield %>
+  </body>
+</html>
